@@ -31,7 +31,7 @@ function Player() {
         let myScore = 0;
         for (let score of this.scores) {
             myScore += score;
-            console.log(score);
+            // console.log(score);
         }
         return myScore;
     }
