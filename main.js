@@ -5,6 +5,8 @@ const scoresA1 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 1]
 // const scoresA11 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
 let deck = [];
 let status = 1; // game status. 1=ongoing. 0=over.
+let player = new Player();
+let house = new Player();
 
 // Objects
 function Player() {
@@ -39,8 +41,7 @@ function Player() {
 
 // Event Listeners
 window.onload = function() {
-    let player = new Player();
-    let house = new Player();
+
     // generate deck; e.g., shuffle(1) means using 1 deck of 52 cards,
     // shuffle(2) means using 2 decks of 52 cards, etc.
     shuffle(1);
@@ -51,19 +52,22 @@ window.onload = function() {
     player.draw();
     house.draw();
     // show the cards
-    console.log(`House cards: ${house.show()}.
-    Score: ${house.score()}.`);
     console.log(`Player cards: ${player.show()}.
     Score: ${player.score()}.`);
 };
 
 $('#hit').click(function() {
-    alert("Hello");
-    console.log("clicked the hit button");
+    player.hit();
+    console.log(`Player cards: ${player.show()}.
+    Score: ${player.score()}.`);
 });
 
 $('#stand').click(function() {
-    console.log("clicked the stand button");
+    // show the cards
+    console.log(`House cards: ${house.show()}.
+    Score: ${house.score()}.`);
+    console.log(`Player cards: ${player.show()}.
+    Score: ${player.score()}.`);
 });
 
 // Functions
