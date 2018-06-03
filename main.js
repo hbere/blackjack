@@ -72,11 +72,7 @@ $('#stand').click(function() {
 });
 
 $('#startOver').click(function() {
-    // show the cards
-    console.log(`House cards: ${house.show()}.
-    Score: ${house.score()}.`);
-    console.log(`Player cards: ${player.show()}.
-    Score: ${player.score()}.`);
+    start();
 });
 
 // Functions
