@@ -7,54 +7,27 @@ let deck = [];
 let status = 1; // game status. 1=ongoing. 0=over.
 
 // Objects
-const house = {
-    cards: [],
-    scores: [],
-    draw: function() {
+function Player() {
+    this.cards = [];
+    this.scores = [];
+    this.draw = function() {
         let tempArray = pickupTopCard();
         console.log(tempArray);
         // add card & register score
         this.cards.push(tempArray[0]);
         this.scores.push(tempArray[1]);
-    },
-    hit: function() {
+    };
+    this.hit = function() {
         // alias for draw
         this.draw();
-    },
-    show: function() {
+    };
+    this.show = function() {
         return [...this.cards];
-    },
-    score: function() {
-        let myScore = 0;
-        for (let score of this.scores) {
-            myScore += score;
-            console.log(score);
-        }
-        return myScore;
-    }
-};
-
-const player = {
-    cards: [],
-    scores: [],
-    draw: function() {
-        let tempArray = pickupTopCard();
-        console.log(tempArray);
-        // add card & register score
-        this.cards.push(tempArray[0]);
-        this.scores.push(tempArray[1]);
-    },
-    hit: function() {
-        // alias for draw
-        this.draw();
-    }, 
-    show: function() {
-        return [...this.cards];
-    },
-    stand: function() {
+    };
+    this.stand = function() {
         // do not add a card & end the game
-    },
-    score: function() {
+    };
+    this.score = function() {
         let myScore = 0;
         for (let score of this.scores) {
             myScore += score;
@@ -62,10 +35,12 @@ const player = {
         }
         return myScore;
     }
-};
+}
 
 // Event Listeners
 window.onload = function() {
+    let player = new Player();
+    let house = new Player();
     // generate deck; e.g., shuffle(1) means using 1 deck of 52 cards,
     // shuffle(2) means using 2 decks of 52 cards, etc.
     shuffle(1);
