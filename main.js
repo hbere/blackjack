@@ -36,6 +36,16 @@ function Player() {
             // console.log(score);
         }
         return myScore;
+    };
+    this.hitWhileLessThan17 = function() {
+        do {
+            let myScore = 0;
+            for (let score of this.scores) {
+                myScore += score;
+                // console.log(score);
+            }
+            this.draw();
+        } while (myScore < 17);
     }
 }
 
@@ -63,6 +73,14 @@ $('#hit').click(function() {
 });
 
 $('#stand').click(function() {
+    // show the cards
+    console.log(`House cards: ${house.show()}.
+    Score: ${house.score()}.`);
+    console.log(`Player cards: ${player.show()}.
+    Score: ${player.score()}.`);
+});
+
+$('#startOver').click(function() {
     // show the cards
     console.log(`House cards: ${house.show()}.
     Score: ${house.score()}.`);
