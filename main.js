@@ -51,16 +51,7 @@ function Player() {
 
 // Event Listeners
 window.onload = function() {
-
-    // generate deck; e.g., shuffle(1) means using 1 deck of 52 cards,
-    // shuffle(2) means using 2 decks of 52 cards, etc.
-    shuffle(1);
-    // console.log(...deck);
-    // deal the cards
-    player.draw();
-    house.draw();
-    player.draw();
-    house.draw();
+    start();
     // show the cards
     console.log(`Player cards: ${player.show()}.
     Score: ${player.score()}.`);
@@ -89,6 +80,18 @@ $('#startOver').click(function() {
 });
 
 // Functions
+function start() {
+    // generate deck; e.g., shuffle(1) means using 1 deck of 52 cards,
+    // shuffle(2) means using 2 decks of 52 cards, etc.
+    shuffle(1);
+    // console.log(...deck);
+    // deal the cards
+    player.draw();
+    house.draw();
+    player.draw();
+    house.draw();
+}
+
 function getRandomInt(min, max) {
     // return 1 random integer between min and max
     min = Math.ceil(min);
