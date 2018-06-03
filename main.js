@@ -25,9 +25,10 @@ const house = {
         return [...this.cards];
     },
     score: function() {
-        let myScore;
+        let myScore = 0;
         for (let score of this.scores) {
             myScore += score;
+            console.log(score);
         }
         return myScore;
     }
@@ -54,9 +55,10 @@ const player = {
         // do not add a card & end the game
     },
     score: function() {
-        let myScore;
+        let myScore = 0;
         for (let score of this.scores) {
             myScore += score;
+            console.log(score);
         }
         return myScore;
     }
@@ -67,6 +69,7 @@ window.onload = function() {
     // generate deck; e.g., shuffle(1) means using 1 deck of 52 cards,
     // shuffle(2) means using 2 decks of 52 cards, etc.
     shuffle(1);
+    // console.log(...deck);
     // deal the cards
     player.draw();
     house.draw();
@@ -104,7 +107,7 @@ function shuffle(decks) {
         for (let suit of suits) {
             let j = 0;
             for (let face of faces) {
-                deck.push([face+suit, scoresA1[i]]);
+                deck.push([face+suit, scoresA1[j]]);
                 j++;
             }
         }
@@ -118,3 +121,4 @@ function pickupTopCard() {
     // return card
     return deck.splice(randomIndex, 1)[0];
 }
+
