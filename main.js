@@ -52,9 +52,6 @@ function Player() {
 // Event Listeners
 window.onload = function() {
     start();
-    // show the cards
-    console.log(`Player cards: ${player.show()}.
-    Score: ${player.score()}.`);
 };
 
 $('#hit').click(function() {
@@ -86,6 +83,9 @@ function start() {
     house.draw();
     player.draw();
     house.draw();
+    // show the cards
+    console.log(`Player cards: ${player.show()}.
+    Score: ${player.score()}.`);
 }
 
 function getRandomInt(min, max) {
