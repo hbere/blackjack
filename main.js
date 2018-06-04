@@ -134,8 +134,8 @@ function start() {
     $("#scoreboard").text([...scoreboard]);
     // print "Blackjack!" message if player got a blackjack
     if (player.score() === 21) {
-        $("#playerHand").append(`. Blackjack!!`);
         stand();
+        $("#playerHand").append(`. Blackjack!!`);
     }
 }
 
