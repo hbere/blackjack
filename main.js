@@ -122,11 +122,11 @@ function start() {
     Score: ${player.score()}`);
     // display cards
     $("#houseHand").empty();
-    $("#houseHand").text(`${house.show1()} [unknownCard]
-${house.score1()}`);
+    $("#houseHand").text(`${house.show1()} []`);
+    $("#housePoints").text(`${house.score1()} points`);
     $("#playerHand").empty();
-    $("#playerHand").text(`${player.show()}
-${player.score()}`);
+    $("#playerHand").text(`${player.show()}`);
+    $("#playerPoints").text(`${player.score()} points`);
     $("#result").empty();
     // ensure hit and stand buttons are enabled to start game
     $("#hit").prop("disabled", false);
@@ -150,11 +150,11 @@ function stand() {
     Score: ${house.score()}`);
     // display cards
     $("#playerHand").empty();
-    $("#playerHand").text(`${player.show()}
-${player.score()}`)
+    $("#playerHand").text(`${player.show()}`);
+    $("#playerPoints").text(`${player.score()} points`);
     $("#houseHand").empty();
-    $("#houseHand").text(`${house.show()}
-${house.score()}`);
+    $("#houseHand").text(`${house.show()}`);
+    $("#housePoints").text(`${house.score()} points`);
     // calculate result
     result = scoreGame(player.score(), house.score());
     // display result & scoreboard
@@ -178,8 +178,8 @@ function hit() {
     Score: ${player.score()}`);
     // display cards
     $("#playerHand").empty();
-    $("#playerHand").text(`${player.show()}
-${player.score()}`)
+    $("#playerHand").text(`${player.show()}`);
+    $("#playerPoints").text(`${player.score()} points`);
     // stop the game if player went bust
     if (player.score() > 21) {
         stand();

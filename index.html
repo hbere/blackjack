@@ -12,19 +12,27 @@
 <body>
     <h1>Simple Blackjack</h1>
     <div class="player">
-        <h3>Your Hand</h3>
-        <div id="playerHand" class="pre-wrap"></div>
+        <div class="subtle">
+            <p>You: <span id="playerPoints" class="pre-wrap"></span></p>
+        </div>
+        <div id="playerHand" class="pre-wrap font-large"></div>
+    </div>
+    <div class="controls">
         <button id="hit">Hit Me</button>
         <button id="stand">Stand & Score</button>
         <button id="newGame">New Game</button>
     </div>
     <div class="house">
-        <h3>House Hand*</h3>
-        <div id="houseHand" class="pre-wrap"></div>
+        <div class="subtle">
+            <p>House*: <span id="housePoints" class="pre-wrap"></span></p>
+        </div>
+        <div id="houseHand" class="pre-wrap font-large"></div>
     </div>
     <div class="scoreboard">
         <div id="result" class="pre-wrap"></div>
-        <h3>Scoreboard</h3>
+    </div>
+    <div class="scoreboard">
+        <h4>Scoreboard</h4>
         <div id="scoreboard" class="pre-wrap"></div>
     </div>
     <div class="rules">

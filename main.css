@@ -6,6 +6,7 @@
 
 body {
     width: 600px;
+    text-align: center;
 }
 
 button {
@@ -18,9 +19,13 @@ button:hover {
     background-color: #4caf50;
 }
 
+h1 {
+    color: darkslategray;
+}
+
 #result {
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.6em;
     color: blue;
     height: 30px;
 }
@@ -34,7 +39,8 @@ button:hover {
 }
 
 .subtle {
-    color: gray;
+    font-size: 0.88em;
+    color: darkslategray;
 }
 
 .rules {
@@ -46,4 +52,14 @@ button:hover {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.font-large {
+    font-size: 2.2em;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        width: 100%;
+    }
 }
