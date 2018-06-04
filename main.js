@@ -67,7 +67,7 @@ function Player() {
         }
     };
     this.score1 = function () {
-        let ace = hasAce([this.cards[0]]);
+        let ace = hasAce(this.cards[0]);
         if (ace === 0) {
             return this.scores[0]; // if no ace, then ace scoring is irrelevant. Report score.
         } else if (ace === 1) {
@@ -131,6 +131,7 @@ function start() {
     // ensure hit and stand buttons are enabled to start game
     $("#hit").prop("disabled", false);
     $("#stand").prop("disabled", false);
+    $("#scoreboard").text([...scoreboard]);
     // print "Blackjack!" message if player got a blackjack
     if (player.score() === 21) {
         $("#playerHand").append(`. Blackjack!!`);

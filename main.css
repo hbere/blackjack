@@ -12,3 +12,7 @@ button:hover {
 #result {
     font-weight: bold;
 }
+
+.subtle {
+    color: gray;
+}
