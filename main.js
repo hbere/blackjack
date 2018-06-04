@@ -5,8 +5,8 @@ const scoresA1 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 1]
 // const scoresA11 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
 let deck = [];
 let status = 1; // game status. 1=ongoing. 0=over.
-let player = new Player();
-let house = new Player();
+let player;
+let house;
 
 // Objects
 function Player() {
@@ -74,6 +74,8 @@ $('#startOver').click(function() {
 
 // Functions
 function start() {
+    player = new Player();
+    house = new Player();
     // generate deck; e.g., shuffle(1) means using 1 deck of 52 cards,
     // shuffle(2) means using 2 decks of 52 cards, etc.
     shuffle(1);
