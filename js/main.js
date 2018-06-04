@@ -146,7 +146,7 @@ function start() {
     Score: ${player.score()}`);
     // display cards
     $("#houseHand").empty();
-    $("#houseHand").append(`${house.show(true)} [?]`);
+    $("#houseHand").append(`${house.show(true)} <span class="subtle">[?]</span>`);
     $("#housePoints").text(`${house.score1()}`);
     $("#playerHand").empty();
     $("#playerHand").append(`${player.show()}`);
@@ -161,6 +161,7 @@ function start() {
         stand();
         $("#playerHand").append(`. Blackjack!`);
     }
+    return null;
 }
 
 function stand() {
@@ -189,6 +190,7 @@ function stand() {
     // disable the hit and stand buttons until new game is started
     $("#hit").prop("disabled", true);
     $("#stand").prop("disabled", true);
+    return null;
 }
 
 function hit() {
@@ -204,6 +206,7 @@ function hit() {
     if (player.score() > 21) {
         stand();
     }
+    return null;
 }
 
 function getRandomInt(min, max) {
