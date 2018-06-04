@@ -1,8 +1,8 @@
 // ** IN PROGRESS **
-// TODO - add support for splitting hand
-// TODO - add additional computer characters
-// TODO - add betting
 // TODO - add "Blackjack" end-game immediately if house hits blackjack
+// TODO - add support for splitting hand
+// TODO - add betting
+// TODO - add additional computer characters
 
 // ** BACK BURNER **
 // TODO - let the user pick the number of decks used
