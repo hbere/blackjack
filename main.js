@@ -38,14 +38,14 @@ function Player() {
         return myScore;
     };
     this.hitWhileLessThan17 = function() {
-        do {
-            let myScore = 0;
-            for (let score of this.scores) {
-                myScore += score;
-                // console.log(score);
-            }
-            this.draw();
-        } while (myScore < 17);
+        let myScore = 0;
+        myScore = arraySum(this.scores);
+        if (myScore < 17) {
+            do {
+                this.draw();
+                myScore = arraySum(this.scores);
+            } while (myScore < 17);
+        }
     }
 }
 
@@ -61,6 +61,7 @@ $('#hit').click(function() {
 });
 
 $('#stand').click(function() {
+    house.hitWhileLessThan17();
     // show the cards
     console.log(`House cards: ${house.show()}.
     Score: ${house.score()}.`);
@@ -120,3 +121,10 @@ function pickupTopCard() {
     return deck.splice(randomIndex, 1)[0];
 }
 
+function arraySum(nums) {
+    let numTot = 0;
+    for (let num of nums) {
+        numTot += num;
+    }
+    return numTot;
+}
