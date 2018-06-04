@@ -2,12 +2,13 @@
 // TODO - add support for splitting hand
 // TODO - add additional computer characters
 // TODO - add betting
-// TODO - add "Blackjack" exclamation if a blackjack
+// TODO - add "Blackjack" end-game immediately if house hits blackjack
 
 // ** BACK BURNER **
 // TODO - let the user pick the number of decks used
 
 // ** DONE **
+// TODO - add "Blackjack" exclamation if a blackjack
 // TODO - add better scoring for Aces
 // TODO - add record of wins & losses
 // TODO - add "You went bust" and auto-complete game if user hits to get 22 or more points
@@ -21,7 +22,7 @@ let deck = [];
 let status = 1; // game status. 1=ongoing. 0=over.
 let player;
 let house;
-let scoreboard = [0,0,0]; // wins | pushes | losses
+let scoreboard = [0, 0, 0]; // wins | pushes | losses
 
 // Objects
 function Player() {
@@ -36,8 +37,7 @@ function Player() {
         try {
             this.cards.push(tempArray[0]);
             this.scores.push(tempArray[1]);
-        }
-        catch(err) {
+        } catch (err) {
             message.innerHTML = "Error: No more cards left in deck. Start Over.";
         }
     };
@@ -117,15 +117,19 @@ function start() {
     Score: ${player.score()}`);
     // display cards
     $("#houseHand").empty();
-    $("#houseHand").text(`Cards: ${house.show1()}`);
+    $("#houseHand").text(`Cards: ${house.show1()}, and a facedown card`);
     $("#houseHand").append(`<br>Score: ${house.score1()}`);
     $("#playerHand").empty();
     $("#playerHand").text(`Cards: ${player.show()}`);
     $("#playerHand").append(`<br>Score: ${player.score()}`);
     $("#result").empty();
     // ensure hit and stand buttons are enabled to start game
-    $("#hit").prop("disabled",false);
-    $("#stand").prop("disabled",false);
+    $("#hit").prop("disabled", false);
+    $("#stand").prop("disabled", false);
+    // print "Blackjack!" message if player got a blackjack
+    if (player.score() === 21) {
+        $("#playerHand").append(`. Blackjack!!`);
+    }
 }
 
 function stand() {
@@ -152,8 +156,8 @@ function stand() {
     scoreboard[2] += result[2];
     $("#scoreboard").text([...scoreboard]);
     // disable the hit and stand buttons until new game is started
-    $("#hit").prop("disabled",true);
-    $("#stand").prop("disabled",true);
+    $("#hit").prop("disabled", true);
+    $("#stand").prop("disabled", true);
 }
 
 function hit() {
@@ -234,7 +238,7 @@ function scoreGame(player, house) {
 function hasAce(cards) {
     let hasAce = 0;
     for (let card of cards) {
-        if ( card.substring(0,1) ) {
+        if (card.substring(0, 1) == "A") {
             hasAce = 1;
         }
     }
