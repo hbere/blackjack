@@ -258,11 +258,11 @@ function scoreGame(player, house) {
             return [0, 0, 1, "Sorry, you lost."];
         }
     } else if (player > 21 && house <= 21) {
-        return [0, 0, 1, "Sorry, you lost."];
+        return [0, 0, 1, "You went bust."];
     } else if (player > 21 && house > 21) {
         return [0, 1, 0, "You both went bust: it's a push."];
     } else if (player <= 21 && house > 21) {
-        return [1, 0, 0, "Congratulations, you won!"];
+        return [1, 0, 0, "The house went bust. You won!"];
     }
 }
 
