@@ -16,6 +16,9 @@ let deck = [];
 let status = 1; // game status. 1=ongoing. 0=over.
 let player;
 let house;
+let wins = 0;
+let pushes = 0;
+let losses = 0;
 
 // Objects
 function Player() {
@@ -72,28 +75,11 @@ window.onload = function () {
 };
 
 $('#hit').click(function () {
-    player.hit();
-    // console.log cards
-    console.log(`Player cards: ${player.show()}.
-    Score: ${player.score()}.`);
-    // display cards
-    $("#playerHand").empty();
-    $("#playerHand").text(`Cards: ${player.show()}.`);
-    $("#playerHand").append(`<br>Score: ${player.score()}.`)
+    hit();
 });
 
 $('#stand').click(function () {
-    house.hitWhileLessThan17();
-    // console.log cards
-    console.log(`House cards: ${house.show()}.
-    Score: ${house.score()}.`);
-    // display cards
-    $("#playerHand").empty();
-    $("#playerHand").text(`Cards: ${player.show()}.`);
-    $("#playerHand").append(`<br>Score: ${player.score()}.`)
-    $("#houseHand").empty();
-    $("#houseHand").text(`Cards: ${house.show()}.`);
-    $("#houseHand").append(`<br>Score: ${house.score()}.`);
+    stand();
 });
 
 $('#startOver').click(function () {
@@ -126,6 +112,31 @@ function start() {
     $("#playerHand").append(`<br>Score: ${player.score()}.`);
 }
 
+function stand() {
+    house.hitWhileLessThan17();
+    // console.log cards
+    console.log(`House cards: ${house.show()}.
+    Score: ${house.score()}.`);
+    // display cards
+    $("#playerHand").empty();
+    $("#playerHand").text(`Cards: ${player.show()}.`);
+    $("#playerHand").append(`<br>Score: ${player.score()}.`)
+    $("#houseHand").empty();
+    $("#houseHand").text(`Cards: ${house.show()}.`);
+    $("#houseHand").append(`<br>Score: ${house.score()}.`);
+}
+
+function hit() {
+    player.hit();
+    // console.log cards
+    console.log(`Player cards: ${player.show()}.
+    Score: ${player.score()}.`);
+    // display cards
+    $("#playerHand").empty();
+    $("#playerHand").text(`Cards: ${player.show()}.`);
+    $("#playerHand").append(`<br>Score: ${player.score()}.`)
+}
+
 function getRandomInt(min, max) {
     // return 1 random integer between min and max
     min = Math.ceil(min);
@@ -141,7 +152,7 @@ function shuffle(decks) {
         for (let suit of suits) {
             let j = 0;
             for (let face of faces) {
-                deck.push([face + suit, scoresA1[j]]);
+                deck.push([`${face}${suit}`, scoresA1[j]]);
                 j++;
             }
         }

@@ -8,3 +8,7 @@ button:hover {
     cursor: pointer;
     background-color: #4caf50;
 }
+
+#result {
+    font-weight: bold;
+}
