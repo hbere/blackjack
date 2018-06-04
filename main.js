@@ -67,7 +67,12 @@ function Player() {
         }
     };
     this.score1 = function () {
-        return this.scores[0];
+        let ace = hasAce([this.cards[0]]);
+        if (ace === 0) {
+            return this.scores[0]; // if no ace, then ace scoring is irrelevant. Report score.
+        } else if (ace === 1) {
+            return this.scores[0] + 10; // if ace and score is 11 or less, report score plus 10.
+        }
     };
     this.hitWhileLessThan17 = function () {
         let myScore = 0;
