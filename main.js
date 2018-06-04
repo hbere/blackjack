@@ -206,10 +206,10 @@ function shuffle(decks) {
 
 function pickupTopCard() {
     // declare variables
-    let randomIndex = Math.floor(Math.random() * deck.length);
+    let randIndex = Math.floor(Math.random() * deck.length);
     // return card
     if (deck.length >= 1) {
-        return deck.splice(randomIndex, 1)[0]; // Take this card out of the deck.
+        return deck.splice(randIndex, 1)[0]; // Take this card out of the deck.
     } else if (deck.length === 0) {
         return null; // Error: no cards left to take out of the deck.
     }
