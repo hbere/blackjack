@@ -16,9 +16,7 @@ let deck = [];
 let status = 1; // game status. 1=ongoing. 0=over.
 let player;
 let house;
-let wins = 0;
-let pushes = 0;
-let losses = 0;
+let scoreboard = [0,0,0]; // wins | pushes | losses
 
 // Objects
 function Player() {
@@ -82,7 +80,7 @@ $('#stand').click(function () {
     stand();
 });
 
-$('#startOver').click(function () {
+$('#newGame').click(function () {
     start();
 });
 
@@ -110,9 +108,12 @@ function start() {
     $("#playerHand").empty();
     $("#playerHand").text(`Cards: ${player.show()}.`);
     $("#playerHand").append(`<br>Score: ${player.score()}.`);
+    $("#result").empty();
 }
 
 function stand() {
+    let result = [];
+    // Make sure house hits until they have 17 or more points
     house.hitWhileLessThan17();
     // console.log cards
     console.log(`House cards: ${house.show()}.
@@ -124,6 +125,14 @@ function stand() {
     $("#houseHand").empty();
     $("#houseHand").text(`Cards: ${house.show()}.`);
     $("#houseHand").append(`<br>Score: ${house.score()}.`);
+    // calculate result
+    result = scoreGame(player.score(), house.score());
+    // display result & scoreboard
+    $("#result").text(result[3]);
+    scoreboard[0] += result[0];
+    scoreboard[1] += result[1];
+    scoreboard[2] += result[2];
+    $("#scoreboard").text([...scoreboard]);
 }
 
 function hit() {
@@ -177,4 +186,22 @@ function arraySum(nums) {
         numTot += num;
     }
     return numTot;
+}
+
+function scoreGame(player, house) {
+    if (player <= 21 && house <= 21) {
+        if (player > house) {
+            return [1, 0, 0, "Congratulations, you won!"];
+        } else if (player === house) {
+            return [0, 1, 0, "You tied: it's a push."];
+        } else if (player < house) {
+            return [0, 0, 1, "Sorry, you lost."];
+        }
+    } else if (player > 21 && house <= 21) {
+        return [0, 0, 1, "Sorry, you lost."];
+    } else if (player > 21 && house > 21) {
+        return [0, 1, 0, "You tied: it's a push."];
+    } else if (player <= 21 && house > 21) {
+        return [1, 0, 0, "Congratulations, you won!"];
+    }
 }
