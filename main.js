@@ -2,9 +2,11 @@
 // TODO - add support for splitting hand
 // TODO - add better scoring for Aces
 // TODO - add additional computer characters
-// TODO - let the user pick the number of decks used
 // TODO - add betting
 // TODO - add "Blackjack" exclamation if a blackjack
+
+// ** BACK BURNER **
+// TODO - let the user pick the number of decks used
 
 // ** DONE **
 // TODO - add record of wins & losses
@@ -53,7 +55,16 @@ function Player() {
         // do not add a card & end the game
     };
     this.score = function () {
-        return arraySum(this.scores);
+        let numSum = arraySum(this.scores);
+        let ace = hasAce(this.cards);
+        // note: scores by default include Ace === 1 point
+        if (numSum > 11) {
+            return numSum; // if score > 11, ace must equal 1 point, else bust. Report score.
+        } else if (ace === 0) {
+            return numSum; // if no ace, then ace scoring is irrelevant. Report score.
+        } else if (ace === 1) {
+            return numSum + 10; // if ace and score is 11 or less, report score plus 10.
+        }
     };
     this.score1 = function () {
         return this.scores[0];
@@ -217,4 +228,14 @@ function scoreGame(player, house) {
     } else if (player <= 21 && house > 21) {
         return [1, 0, 0, "Congratulations, you won!"];
     }
+}
+
+function hasAce(cards) {
+    let hasAce = 0;
+    for (let card of cards) {
+        if ( card.substring(0,1) ) {
+            hasAce = 1;
+        }
+    }
+    return hasAce;
 }
