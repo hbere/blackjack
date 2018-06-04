@@ -5,6 +5,7 @@
 // TODO - add betting
 // TODO - add "Blackjack" exclamation if a blackjack
 // TODO - add record of wins & losses
+// TODO - add "You went bust" and auto-complete game if user hits to get 22 or more points
 
 // Variables
 const suits = ["-S", "-C", "-D", "-H"];
@@ -20,24 +21,24 @@ let house;
 function Player() {
     this.cards = [];
     this.scores = [];
-    this.draw = function() {
+    this.draw = function () {
         let tempArray = pickupTopCard();
         // console.log(tempArray);
         // add card & register score
         this.cards.push(tempArray[0]);
         this.scores.push(tempArray[1]);
     };
-    this.hit = function() {
+    this.hit = function () {
         // alias for draw
         this.draw();
     };
-    this.show = function() {
+    this.show = function () {
         return [...this.cards];
     };
-    this.stand = function() {
+    this.stand = function () {
         // do not add a card & end the game
     };
-    this.score = function() {
+    this.score = function () {
         let myScore = 0;
         for (let score of this.scores) {
             myScore += score;
@@ -45,7 +46,7 @@ function Player() {
         }
         return myScore;
     };
-    this.hitWhileLessThan17 = function() {
+    this.hitWhileLessThan17 = function () {
         let myScore = 0;
         myScore = arraySum(this.scores);
         if (myScore < 17) {
@@ -58,11 +59,11 @@ function Player() {
 }
 
 // Event Listeners
-window.onload = function() {
+window.onload = function () {
     start();
 };
 
-$('#hit').click(function() {
+$('#hit').click(function () {
     player.hit();
     // console.log cards
     console.log(`Player cards: ${player.show()}.
@@ -73,7 +74,7 @@ $('#hit').click(function() {
     $("#playerHand").append(`<br>Score: ${player.score()}.`)
 });
 
-$('#stand').click(function() {
+$('#stand').click(function () {
     house.hitWhileLessThan17();
     // console.log cards
     console.log(`House cards: ${house.show()}.
@@ -83,7 +84,7 @@ $('#stand').click(function() {
     $("#houseHand").append(`<br>Score: ${house.score()}.`);
 });
 
-$('#startOver').click(function() {
+$('#startOver').click(function () {
     start();
 });
 
@@ -126,7 +127,7 @@ function shuffle(decks) {
         for (let suit of suits) {
             let j = 0;
             for (let face of faces) {
-                deck.push([face+suit, scoresA1[j]]);
+                deck.push([face + suit, scoresA1[j]]);
                 j++;
             }
         }
@@ -136,9 +137,13 @@ function shuffle(decks) {
 
 function pickupTopCard() {
     // declare variables
-    let randomIndex = Math.floor(Math.random()*deck.length);
+    let randomIndex = Math.floor(Math.random() * deck.length);
     // return card
-    return deck.splice(randomIndex, 1)[0];
+    if (deck.length >= 1) {
+        return deck.splice(randomIndex, 1)[0]; // Take this card out of the deck.
+    } else if (deck.length === 0) {
+        return null; // Error: no cards left to take out of the deck.
+    }
 }
 
 function arraySum(nums) {
