@@ -146,6 +146,7 @@ function stand() {
     result = scoreGame(player.score(), house.score());
     // display result & scoreboard
     $("#result").text(result[3]);
+    console.log(result[3]);
     scoreboard[0] += result[0];
     scoreboard[1] += result[1];
     scoreboard[2] += result[2];
