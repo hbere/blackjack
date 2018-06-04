@@ -1,6 +1,5 @@
 // ** IN PROGRESS **
 // TODO - add support for splitting hand
-// TODO - add better scoring for Aces
 // TODO - add additional computer characters
 // TODO - add betting
 // TODO - add "Blackjack" exclamation if a blackjack
@@ -9,6 +8,7 @@
 // TODO - let the user pick the number of decks used
 
 // ** DONE **
+// TODO - add better scoring for Aces
 // TODO - add record of wins & losses
 // TODO - add "You went bust" and auto-complete game if user hits to get 22 or more points
 
@@ -113,7 +113,7 @@ function start() {
     house.draw();
     // console.log cards
     console.log('***New Game***');
-    console.log(`Player cards: ${player.show()}.
+    console.log(`Player: ${player.show()}.
     Score: ${player.score()}`);
     // display cards
     $("#houseHand").empty();
@@ -133,7 +133,7 @@ function stand() {
     // Make sure house hits until they have 17 or more points
     house.hitWhileLessThan17();
     // console.log cards
-    console.log(`House cards: ${house.show()}.
+    console.log(`House: ${house.show()}.
     Score: ${house.score()}`);
     // display cards
     $("#playerHand").empty();
@@ -159,7 +159,7 @@ function stand() {
 function hit() {
     player.hit();
     // console.log cards
-    console.log(`Player cards: ${player.show()}.
+    console.log(`Player: ${player.show()}.
     Score: ${player.score()}`);
     // display cards
     $("#playerHand").empty();
