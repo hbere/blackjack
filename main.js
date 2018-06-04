@@ -1,9 +1,12 @@
+// ** IN PROGRESS **
 // TODO - add support for splitting hand
 // TODO - add better scoring for Aces
 // TODO - add additional computer characters
 // TODO - let the user pick the number of decks used
 // TODO - add betting
 // TODO - add "Blackjack" exclamation if a blackjack
+
+// ** DONE **
 // TODO - add record of wins & losses
 // TODO - add "You went bust" and auto-complete game if user hits to get 22 or more points
 
