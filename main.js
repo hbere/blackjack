@@ -14,7 +14,7 @@ function Player() {
     this.scores = [];
     this.draw = function() {
         let tempArray = pickupTopCard();
-        console.log(tempArray);
+        // console.log(tempArray);
         // add card & register score
         this.cards.push(tempArray[0]);
         this.scores.push(tempArray[1]);
@@ -56,17 +56,23 @@ window.onload = function() {
 
 $('#hit').click(function() {
     player.hit();
+    // console.log cards
     console.log(`Player cards: ${player.show()}.
     Score: ${player.score()}.`);
+    // display cards
+    $("#playerHand").empty();
+    $("#playerHand").text(`Cards: ${player.show()}.`);
+    $("#playerHand").append(`<br>Score: ${player.score()}.`)
 });
 
 $('#stand').click(function() {
     house.hitWhileLessThan17();
-    // show the cards
+    // console.log cards
     console.log(`House cards: ${house.show()}.
     Score: ${house.score()}.`);
-    console.log(`Player cards: ${player.show()}.
-    Score: ${player.score()}.`);
+    // display cards
+    $("#houseHand").text(`Cards: ${house.show()}.`);
+    $("#houseHand").append(`<br>Score: ${house.score()}.`);
 });
 
 $('#startOver').click(function() {
@@ -86,9 +92,15 @@ function start() {
     house.draw();
     player.draw();
     house.draw();
-    // show the cards
+    // console.log cards
+    console.log('***New Game***');
     console.log(`Player cards: ${player.show()}.
     Score: ${player.score()}.`);
+    // display cards
+    $("#houseHand").empty();
+    $("#playerHand").empty();
+    $("#playerHand").text(`Cards: ${player.show()}.`);
+    $("#playerHand").append(`<br>Score: ${player.score()}.`);
 }
 
 function getRandomInt(min, max) {

@@ -1,4 +1,9 @@
 /* My CSS */
+
+* {
+    margin: 8px;
+}
+
 button:hover {
     cursor: pointer;
     background-color: #4caf50;
