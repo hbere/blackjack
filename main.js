@@ -109,6 +109,9 @@ function start() {
     $("#playerHand").text(`Cards: ${player.show()}.`);
     $("#playerHand").append(`<br>Score: ${player.score()}.`);
     $("#result").empty();
+    // ensure hit and stand buttons are enabled to start game
+    $("#hit").prop("disabled",false);
+    $("#stand").prop("disabled",false);
 }
 
 function stand() {
@@ -133,6 +136,9 @@ function stand() {
     scoreboard[1] += result[1];
     scoreboard[2] += result[2];
     $("#scoreboard").text([...scoreboard]);
+    // disable the hit and stand buttons until new game is started
+    $("#hit").prop("disabled",true);
+    $("#stand").prop("disabled",true);
 }
 
 function hit() {
@@ -144,6 +150,10 @@ function hit() {
     $("#playerHand").empty();
     $("#playerHand").text(`Cards: ${player.show()}.`);
     $("#playerHand").append(`<br>Score: ${player.score()}.`)
+    // stop the game if player went bust
+    if (player.score() > 21) {
+        stand();
+    }
 }
 
 function getRandomInt(min, max) {
