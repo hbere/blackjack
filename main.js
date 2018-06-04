@@ -1,3 +1,11 @@
+// TODO - add support for splitting hand
+// TODO - add better scoring for Aces
+// TODO - add additional computer characters
+// TODO - let the user pick the number of decks used
+// TODO - add betting
+// TODO - add "Blackjack" exclamation if a blackjack
+// TODO - add record of wins & losses
+
 // Variables
 const suits = ["-S", "-C", "-D", "-H"];
 const faces = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
