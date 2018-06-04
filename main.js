@@ -14,7 +14,7 @@
 // TODO - add "You went bust" and auto-complete game if user hits to get 22 or more points
 
 // Variables
-const suits = ["-Spades", "-Clubs", "-Diamonds", "-Hearts"];
+const suits = ["♠", "♣", "♦", "♥"];
 const faces = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 const scoresA1 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 1]
 // const scoresA11 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
@@ -46,7 +46,7 @@ function Player() {
         this.draw();
     };
     this.show = function () {
-        return [...this.cards];
+        return this.cards.join("  ");
     };
     this.show1 = function () {
         return this.cards[0];
@@ -122,11 +122,11 @@ function start() {
     Score: ${player.score()}`);
     // display cards
     $("#houseHand").empty();
-    $("#houseHand").text(`Cards: ${house.show1()}, and a facedown card`);
-    $("#houseHand").append(`<br>Score: ${house.score1()}`);
+    $("#houseHand").text(`${house.show1()} [unknownCard]
+${house.score1()}`);
     $("#playerHand").empty();
-    $("#playerHand").text(`Cards: ${player.show()}`);
-    $("#playerHand").append(`<br>Score: ${player.score()}`);
+    $("#playerHand").text(`${player.show()}
+${player.score()}`);
     $("#result").empty();
     // ensure hit and stand buttons are enabled to start game
     $("#hit").prop("disabled", false);
@@ -150,11 +150,11 @@ function stand() {
     Score: ${house.score()}`);
     // display cards
     $("#playerHand").empty();
-    $("#playerHand").text(`Cards: ${player.show()}`);
-    $("#playerHand").append(`<br>Score: ${player.score()}`)
+    $("#playerHand").text(`${player.show()}
+${player.score()}`)
     $("#houseHand").empty();
-    $("#houseHand").text(`Cards: ${house.show()}`);
-    $("#houseHand").append(`<br>Score: ${house.score()}`);
+    $("#houseHand").text(`${house.show()}
+${house.score()}`);
     // calculate result
     result = scoreGame(player.score(), house.score());
     // display result & scoreboard
@@ -178,8 +178,8 @@ function hit() {
     Score: ${player.score()}`);
     // display cards
     $("#playerHand").empty();
-    $("#playerHand").text(`Cards: ${player.show()}`);
-    $("#playerHand").append(`<br>Score: ${player.score()}`)
+    $("#playerHand").text(`${player.show()}
+${player.score()}`)
     // stop the game if player went bust
     if (player.score() > 21) {
         stand();

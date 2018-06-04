@@ -1,7 +1,7 @@
 /* My CSS */
 
 * {
-    margin: 8px;
+    margin: 8px auto;
 }
 
 body {
@@ -26,8 +26,11 @@ button:hover {
 }
 
 #scoreboard {
-    white-space: pre-wrap;
     font-family: 'Courier New', Courier, monospace;
+}
+
+.pre-wrap {
+    white-space: pre-wrap;
 }
 
 .subtle {
