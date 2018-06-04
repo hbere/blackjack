@@ -23,10 +23,17 @@ function Player() {
     this.scores = [];
     this.draw = function () {
         let tempArray = pickupTopCard();
+        let message = document.getElementById("playerHand");
+        message.innerHTML = "";
         // console.log(tempArray);
         // add card & register score
-        this.cards.push(tempArray[0]);
-        this.scores.push(tempArray[1]);
+        try {
+            this.cards.push(tempArray[0]);
+            this.scores.push(tempArray[1]);
+        }
+        catch(err) {
+            message.innerHTML = "Error: No more cards left in deck. Start Over.";
+        }
     };
     this.hit = function () {
         // alias for draw
@@ -80,6 +87,9 @@ $('#stand').click(function () {
     console.log(`House cards: ${house.show()}.
     Score: ${house.score()}.`);
     // display cards
+    $("#playerHand").empty();
+    $("#playerHand").text(`Cards: ${player.show()}.`);
+    $("#playerHand").append(`<br>Score: ${player.score()}.`)
     $("#houseHand").text(`Cards: ${house.show()}.`);
     $("#houseHand").append(`<br>Score: ${house.score()}.`);
 });
