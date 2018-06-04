@@ -13,6 +13,10 @@ button {
     min-height: 48px;
     min-width: 48px;
     border-radius: 15px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    /* color: darkslategray; */
 }
 
 button:hover {
@@ -29,14 +33,13 @@ h1, h2, h3, h4, h5, h6 {
     height: 45px;
 }
 
-.scoreboard {
-    width: 100%;
-}
-
 #scoreboard {
     /* font-family: 'Courier New', Courier, monospace; */
     margin: 0px auto;
     text-align: right;
+}
+.scoreboard {
+    width: 100%;
 }
 
 .pre-wrap {
@@ -65,6 +68,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .strong {
     font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.card {
+    
 }
 
 @media only screen and (max-width: 600px) {

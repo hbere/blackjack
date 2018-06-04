@@ -14,7 +14,11 @@
 // TODO - add "You went bust" and auto-complete game if user hits to get 22 or more points
 
 // Variables
-const suits = ["♠", "♣", "♦", "♥"];
+const strSpade = "♠";
+const strClub = "♣";
+const strDiamond = "♦";
+const strHeart = "♥";
+const suits = [strSpade, strClub, strDiamond, strHeart];
 const faces = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 const scoresA1 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 1]
 // const scoresA11 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
@@ -45,11 +49,31 @@ function Player() {
         // alias for draw
         this.draw();
     };
-    this.show = function () {
-        return this.cards.join("  ");
-    };
-    this.show1 = function () {
-        return this.cards[0];
+    this.show = function (showOneCardOnly = false) {
+        let cardsTemp = [];
+        let returnArray = [];
+        let strHTML = "";
+
+        if (showOneCardOnly===false) {
+            cardsTemp.push(...this.cards);
+        } else {
+            cardsTemp.push(this.cards[0]);
+        }
+
+        for (let card of cardsTemp) {
+            if ( redCard(card) ) {
+                strHTML += "<span class='card red'>";
+                strHTML += card;
+                strHTML += "</span>";
+            } else {
+                strHTML += "<span class='card'>";
+                strHTML += card;
+                strHTML += "</span>";
+            }
+            returnArray.push(strHTML);
+            strHTML = " ";
+        }
+        return returnArray.join("");
     };
     this.stand = function () {
         // do not add a card & end the game
@@ -122,10 +146,10 @@ function start() {
     Score: ${player.score()}`);
     // display cards
     $("#houseHand").empty();
-    $("#houseHand").text(`${house.show1()} [?]`);
+    $("#houseHand").append(`${house.show(true)} [?]`);
     $("#housePoints").text(`${house.score1()}`);
     $("#playerHand").empty();
-    $("#playerHand").text(`${player.show()}`);
+    $("#playerHand").append(`${player.show()}`);
     $("#playerPoints").text(`${player.score()}`);
     $("#result").empty();
     // ensure hit and stand buttons are enabled to start game
@@ -148,10 +172,10 @@ function stand() {
     Score: ${house.score()}`);
     // display cards
     $("#playerHand").empty();
-    $("#playerHand").text(`${player.show()}`);
+    $("#playerHand").append(`${player.show()}`);
     $("#playerPoints").text(`${player.score()}`);
     $("#houseHand").empty();
-    $("#houseHand").text(`${house.show()}`);
+    $("#houseHand").append(`${house.show()}`);
     $("#housePoints").text(`${house.score()}`);
     // calculate result
     result = scoreGame(player.score(), house.score());
@@ -174,7 +198,7 @@ function hit() {
     Score: ${player.score()}`);
     // display cards
     $("#playerHand").empty();
-    $("#playerHand").text(`${player.show()}`);
+    $("#playerHand").append(`${player.show()}`);
     $("#playerPoints").text(`${player.score()}`);
     // stop the game if player went bust
     if (player.score() > 21) {
@@ -250,4 +274,14 @@ function hasAce(cards) {
         }
     }
     return hasAce;
+}
+
+function redCard(card) {
+    let isRed = false;
+    if (card.includes(strDiamond, 0)) {
+        isRed = true;
+    } else if (card.includes(strHeart, 0)) {
+        isRed = true;
+    }
+    return isRed;
 }
