@@ -4,6 +4,15 @@
     margin: 8px;
 }
 
+body {
+    width: 600px;
+}
+
+button {
+    min-height: 48px;
+    min-width: 48px;
+}
+
 button:hover {
     cursor: pointer;
     background-color: #4caf50;
@@ -13,8 +22,25 @@ button:hover {
     font-weight: bold;
     font-size: 1.2em;
     color: blue;
+    height: 30px;
+}
+
+#scoreboard {
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .subtle {
     color: gray;
+}
+
+.rules {
+    position: relative;
+    height: 45px;
+}
+
+.rules p {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }

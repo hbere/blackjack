@@ -131,7 +131,9 @@ function start() {
     // ensure hit and stand buttons are enabled to start game
     $("#hit").prop("disabled", false);
     $("#stand").prop("disabled", false);
-    $("#scoreboard").text([...scoreboard]);
+    $("#scoreboard").text(`Won:    ${[scoreboard[0]]}
+Lost:   ${[scoreboard[2]]}
+Pushed: ${[scoreboard[1]]}`);
     // print "Blackjack!" message if player got a blackjack
     if (player.score() === 21) {
         stand();
@@ -161,7 +163,9 @@ function stand() {
     scoreboard[0] += result[0];
     scoreboard[1] += result[1];
     scoreboard[2] += result[2];
-    $("#scoreboard").text([...scoreboard]);
+    $("#scoreboard").text(`Won:    ${[scoreboard[0]]}
+Lost:   ${[scoreboard[2]]}
+Pushed: ${[scoreboard[1]]}`);
     // disable the hit and stand buttons until new game is started
     $("#hit").prop("disabled", true);
     $("#stand").prop("disabled", true);
