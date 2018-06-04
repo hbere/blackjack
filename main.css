@@ -1,7 +1,7 @@
 /* My CSS */
 
 * {
-    margin: 8px auto;
+    margin: 12px auto;
 }
 
 body {
@@ -12,6 +12,7 @@ body {
 button {
     min-height: 48px;
     min-width: 48px;
+    border-radius: 15px;
 }
 
 button:hover {
@@ -19,19 +20,23 @@ button:hover {
     background-color: #4caf50;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     color: darkslategray;
+    font-family: 'Arial Narrow', Arial, sans-serif;
 }
 
 #result {
-    font-weight: bold;
-    font-size: 1.6em;
-    color: blue;
-    height: 30px;
+    height: 45px;
+}
+
+.scoreboard {
+    width: 100%;
 }
 
 #scoreboard {
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
+    margin: 0px auto;
+    text-align: right;
 }
 
 .pre-wrap {
@@ -39,7 +44,7 @@ h1 {
 }
 
 .subtle {
-    font-size: 0.88em;
+    font-size: 0.87em;
     color: darkslategray;
 }
 
@@ -55,7 +60,11 @@ h1 {
 }
 
 .font-large {
-    font-size: 2.2em;
+    font-size: 2.5em;
+}
+
+.strong {
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {

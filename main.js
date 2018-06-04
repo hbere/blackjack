@@ -122,22 +122,20 @@ function start() {
     Score: ${player.score()}`);
     // display cards
     $("#houseHand").empty();
-    $("#houseHand").text(`${house.show1()} []`);
-    $("#housePoints").text(`${house.score1()} points`);
+    $("#houseHand").text(`${house.show1()} [?]`);
+    $("#housePoints").text(`${house.score1()}`);
     $("#playerHand").empty();
     $("#playerHand").text(`${player.show()}`);
-    $("#playerPoints").text(`${player.score()} points`);
+    $("#playerPoints").text(`${player.score()}`);
     $("#result").empty();
     // ensure hit and stand buttons are enabled to start game
     $("#hit").prop("disabled", false);
     $("#stand").prop("disabled", false);
-    $("#scoreboard").text(`Won:    ${[scoreboard[0]]}
-Lost:   ${[scoreboard[2]]}
-Pushed: ${[scoreboard[1]]}`);
+    $("#scoreboard").text(`${[scoreboard[0]]}-${[scoreboard[2]]}-${[scoreboard[1]]}`);
     // print "Blackjack!" message if player got a blackjack
     if (player.score() === 21) {
         stand();
-        $("#playerHand").append(`. Blackjack!!`);
+        $("#playerHand").append(`. Blackjack!`);
     }
 }
 
@@ -151,10 +149,10 @@ function stand() {
     // display cards
     $("#playerHand").empty();
     $("#playerHand").text(`${player.show()}`);
-    $("#playerPoints").text(`${player.score()} points`);
+    $("#playerPoints").text(`${player.score()}`);
     $("#houseHand").empty();
     $("#houseHand").text(`${house.show()}`);
-    $("#housePoints").text(`${house.score()} points`);
+    $("#housePoints").text(`${house.score()}`);
     // calculate result
     result = scoreGame(player.score(), house.score());
     // display result & scoreboard
@@ -163,9 +161,7 @@ function stand() {
     scoreboard[0] += result[0];
     scoreboard[1] += result[1];
     scoreboard[2] += result[2];
-    $("#scoreboard").text(`Won:    ${[scoreboard[0]]}
-Lost:   ${[scoreboard[2]]}
-Pushed: ${[scoreboard[1]]}`);
+    $("#scoreboard").text(`${[scoreboard[0]]}-${[scoreboard[2]]}-${[scoreboard[1]]}`);
     // disable the hit and stand buttons until new game is started
     $("#hit").prop("disabled", true);
     $("#stand").prop("disabled", true);
@@ -179,7 +175,7 @@ function hit() {
     // display cards
     $("#playerHand").empty();
     $("#playerHand").text(`${player.show()}`);
-    $("#playerPoints").text(`${player.score()} points`);
+    $("#playerPoints").text(`${player.score()}`);
     // stop the game if player went bust
     if (player.score() > 21) {
         stand();

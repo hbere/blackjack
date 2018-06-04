@@ -10,35 +10,33 @@
 </head>
 
 <body>
-    <h1>Simple Blackjack</h1>
+    <h2>Simple Blackjack</h2>
     <div class="player">
-        <div class="subtle">
-            <p>You: <span id="playerPoints" class="pre-wrap"></span></p>
-        </div>
         <div id="playerHand" class="pre-wrap font-large"></div>
+        <div class="subtle">
+            <p>You show <span id="playerPoints" class="strong pre-wrap"></span> points.</p>
+        </div>
     </div>
     <div class="controls">
-        <button id="hit">Hit Me</button>
-        <button id="stand">Stand & Score</button>
-        <button id="newGame">New Game</button>
+        <button id="hit"><h3>Hit</h3></button>
+        <button id="stand"><h3>Stand</h3></button>
+        <button id="newGame"><h3>Next Game</h3></button>
     </div>
     <div class="house">
-        <div class="subtle">
-            <p>House*: <span id="housePoints" class="pre-wrap"></span></p>
-        </div>
         <div id="houseHand" class="pre-wrap font-large"></div>
+        <div class="subtle">
+            <p>The house shows <span id="housePoints" class="strong pre-wrap"></span> points.*</p>
+        </div>
     </div>
     <div class="scoreboard">
-        <div id="result" class="pre-wrap"></div>
+        <h3 id="result" class="pre-wrap"></h3>
     </div>
     <div class="scoreboard">
-        <h4>Scoreboard</h4>
-        <div id="scoreboard" class="pre-wrap"></div>
+        <h2>Won-Lost-Pushed</h2>
+        <span id="scoreboard" class="subtle strong pre-wrap"></span>
     </div>
     <div class="rules">
-        <p class="subtle">
-            <em>*The house stands at 17 or greater</em>
-        </p>
+        <p class="subtle">*The house stands at 17 or greater.</p>
     </div>
     <script src="jquery-3.3.1.min.js"></script>
     <script src="main.js"></script>
