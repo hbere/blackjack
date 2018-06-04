@@ -42,16 +42,17 @@ function Player() {
     this.show = function () {
         return [...this.cards];
     };
+    this.show1 = function () {
+        return this.cards[0];
+    };
     this.stand = function () {
         // do not add a card & end the game
     };
     this.score = function () {
-        let myScore = 0;
-        for (let score of this.scores) {
-            myScore += score;
-            // console.log(score);
-        }
-        return myScore;
+        return arraySum(this.scores);
+    };
+    this.score1 = function () {
+        return this.scores[0];
     };
     this.hitWhileLessThan17 = function () {
         let myScore = 0;
@@ -90,6 +91,7 @@ $('#stand').click(function () {
     $("#playerHand").empty();
     $("#playerHand").text(`Cards: ${player.show()}.`);
     $("#playerHand").append(`<br>Score: ${player.score()}.`)
+    $("#houseHand").empty();
     $("#houseHand").text(`Cards: ${house.show()}.`);
     $("#houseHand").append(`<br>Score: ${house.score()}.`);
 });
@@ -117,6 +119,8 @@ function start() {
     Score: ${player.score()}.`);
     // display cards
     $("#houseHand").empty();
+    $("#houseHand").text(`Cards: ${house.show1()}.`);
+    $("#houseHand").append(`<br>Score: ${house.score1()}.`);
     $("#playerHand").empty();
     $("#playerHand").text(`Cards: ${player.show()}.`);
     $("#playerHand").append(`<br>Score: ${player.score()}.`);
