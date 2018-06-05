@@ -1,7 +1,7 @@
 /* My CSS */
 
 * {
-    margin: 12px auto;
+    margin: 10px auto;
 }
 
 body {
@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #result {
-    height: 45px;
+    height: 30px;
 }
 
 #scoreboard {
@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
     color: darkslategray;
 }
 
-.rules {
+/* .rules {
     position: relative;
     height: 45px;
 }
@@ -63,10 +63,10 @@ h1, h2, h3, h4, h5, h6 {
     position: absolute;
     bottom: 0;
     left: 0;
-}
+} */
 
 .font-large {
-    font-size: 2.5em;
+    font-size: 2.7em;
 }
 
 .strong {
@@ -77,12 +77,6 @@ h1, h2, h3, h4, h5, h6 {
     color: red;
 }
 
-.card {
-    /* TODO - add card styling */
-}
-
-@media only screen and (max-width: 600px) {
-    body {
-        width: 100%;
-    }
-}
+/* .card {
+    TODO - add card styling
+} */

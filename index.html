@@ -7,6 +7,7 @@
     <title>Simple Blackjack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen and (max-width: 600px)" href="css/mobile.css" />
     <link rel="shortcut icon" type='image/x-icon' href="img/simpleBlackjackLogo-transparent.ico">
 </head>
 
@@ -14,7 +15,7 @@
     <h2>Simple Blackjack</h2>
     <div class="player">
         <div class="subtle font-small">
-            <p>You show <span id="playerPoints" class="strong pre-wrap"></span><strong> points</strong>.</p>
+            <p>You have <span id="playerPoints" class="strong pre-wrap"></span><strong> points</strong>.</p>
         </div>
         <div id="playerHand" class="pre-wrap font-large"></div>
     </div>
@@ -36,7 +37,7 @@
         <h2>Won-Lost-Pushed</h2>
         <span id="scoreboard" class="subtle font-small strong pre-wrap"></span>
     </div>
-    <div class="rules"></div>
+    <!-- <div class="rules"></div> -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/main.js"></script>
 </body>
