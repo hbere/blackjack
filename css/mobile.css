@@ -2,11 +2,9 @@
 
 body {
     width: 96%;
+    border: none;
+    background-color: white;
     margin: 2%;
-}
-
-.scoreboard {
-    width: auto;
 }
 
 /* SIZES IN CASE WANT TO CHANGE LATER
