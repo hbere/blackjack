@@ -1,8 +1,8 @@
 // ** IN PROGRESS **
-// TODO - add "Blackjack" end-game immediately if house hits blackjack
-// TODO - add support for splitting hand
+// TODO - research rules for what happens if house hits "Blackjack"
+// TODO - add hand-splitting button & functionality when user draws a pair
+// TODO - add keyboard controls
 // TODO - add betting
-// TODO - add support for playing with keyboard
 
 // ** BACK BURNER **
 // TODO - let the user pick the number of decks used
