@@ -3,6 +3,7 @@
 // TODO - add hand-splitting button & functionality when user draws a pair
 // TODO - add keyboard controls
 // TODO - add betting
+// TODO - fix bug where house always considers Ace to be 1 point (should be flexible & recognize Blackjacks)
 
 // ** BACK BURNER **
 // TODO - let the user pick the number of decks used
