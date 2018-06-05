@@ -1,5 +1,30 @@
 /* Mobile CSS */
 
 body {
-    width: 100%;
+    width: 96%;
+    margin: 2%;
 }
+
+.scoreboard {
+    width: auto;
+}
+
+/* SIZES IN CASE WANT TO CHANGE LATER
+
+button {
+    min-height: 48px;
+    min-width: 48px;
+    font-size: 1.1em;
+}
+
+#result {
+    height: 30px;
+}
+
+.font-small {
+    font-size: 0.87em;
+}
+
+.font-large {
+    font-size: 2.7em;
+} */

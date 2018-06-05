@@ -1,12 +1,20 @@
-/* My CSS */
+/* Main CSS */
 
 * {
-    margin: 10px auto;
+    margin: 0px auto;
 }
 
 body {
-    width: 600px;
+    width: 375px;
     text-align: center;
+    border: dotted 1px rgb(182, 182, 182);
+    background-color: snow;
+    margin: 10px auto;
+}
+
+header, main div {
+    background-color: white;
+    padding: 5px 0px;
 }
 
 button {
@@ -27,6 +35,7 @@ button:hover {
 h1, h2, h3, h4, h5, h6 {
     color: darkslategray;
     font-family: 'Arial Narrow', Arial, sans-serif;
+    margin: 0px 0px;
 }
 
 #result {
@@ -37,9 +46,6 @@ h1, h2, h3, h4, h5, h6 {
     /* font-family: 'Courier New', Courier, monospace; */
     margin: 0px auto;
     text-align: right;
-}
-.scoreboard {
-    width: 100%;
 }
 
 .pre-wrap {
