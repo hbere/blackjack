@@ -141,12 +141,12 @@ $('#newGame').click(function () {
 });
 
 $('body').keypress(function( event ) {
-    console.log(event.which);
+    // console.log(event.which);
     if ( event.which === 49 ) {
-        // 1 key = hit
+        // 1 key = hit()
         hit();
     } else if ( event.which === 50 ) {
-        // 2 key = stand
+        // 2 key = stand()
         stand();
     } else if ( event.which === 51 ) {
         // 3 key = next game
