@@ -51,6 +51,9 @@ function Player() {
         // alias for draw
         this.draw();
     };
+    // this.split = function () {
+    //     // TODO - write this function
+    // }
     this.show = function (showOneCardOnly = false) {
         let cardsTemp = [];
         let returnArray = [];
@@ -131,6 +134,10 @@ window.onload = function () {
 $('#hit').click(function () {
     hit();
 });
+
+// $('#split').click(function () {
+//     split();
+// });
 
 $('#stand').click(function () {
     stand();
