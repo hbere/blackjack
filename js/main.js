@@ -1,5 +1,5 @@
 // ** IN PROGRESS **
-// TODO - research rules for what happens if house hits "Blackjack"
+// TODO - research rules for what happens when player and/or house hits "Blackjack"
 // TODO - add hand-splitting button & functionality when user draws a pair
 // TODO - add betting
 
