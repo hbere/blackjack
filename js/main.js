@@ -3,7 +3,6 @@
 // TODO - add hand-splitting button & functionality when user draws a pair
 // TODO - add keyboard controls
 // TODO - add betting
-// TODO - fix bug where house always considers Ace to be 1 point (should be flexible & recognize Blackjacks)
 
 // ** BACK BURNER **
 // TODO - let the user pick the number of decks used
@@ -14,6 +13,8 @@
 // TODO - add better scoring for Aces
 // TODO - add record of wins & losses
 // TODO - add "You went bust" and auto-complete game if user hits to get 22 or more points
+// TODO - fix bug where house always considers Ace to be 1 point (should be flexible & recognize Blackjacks)
+
 
 // Variables
 const strSpade = "♠";
@@ -93,20 +94,31 @@ function Player() {
         }
     };
     this.score1 = function () {
-        let ace = hasAce(this.cards[0]);
-        if (ace === 0) {
+        let aceShowing = hasAce(this.cards[0]);
+        if (aceShowing === 0) {
             return this.scores[0]; // if no ace, then ace scoring is irrelevant. Report score.
-        } else if (ace === 1) {
+        } else if (aceShowing === 1) {
             return this.scores[0] + 10; // if ace and score is 11 or less, report score plus 10.
         }
     };
     this.hitWhileLessThan17 = function () {
-        let myScore = 0;
-        myScore = arraySum(this.scores);
+        let ace = hasAce(this.cards);
+        let myScore = arraySum(this.scores);
+        if (ace === 1) {
+            myScore += 10; // if ace and score is 11 or less, report score plus 10.
+        }
         if (myScore < 17) {
             do {
-                this.draw();
-                myScore = arraySum(this.scores);
+                if (myScore > 11) {
+                    this.draw(); // if score > 11, ace must equal 1 point, else bust. Report score.
+                    myScore = arraySum(this.scores);
+                } else if (ace === 0) {
+                    this.draw(); // if no ace, then ace scoring is irrelevant. Report score.
+                    myScore = arraySum(this.scores);
+                } else if (ace === 1) {
+                    this.draw(); // if no ace, then ace scoring is irrelevant. Report score.
+                    myScore = arraySum(this.scores) + 10;
+                }
             } while (myScore < 17);
         }
     }
@@ -168,6 +180,11 @@ function start() {
 
 function stand() {
     let result = [];
+    let houseBlackjack = false;
+    // Show "Blackjack"
+    if (house.score() === 21) {
+        houseBlackjack = true;
+    }
     // Make sure house hits until they have 17 or more points
     house.hitWhileLessThan17();
     // console.log cards
@@ -179,6 +196,9 @@ function stand() {
     $("#playerPoints").text(`${player.score()}`);
     $("#houseHand").empty();
     $("#houseHand").append(`${house.show()}`);
+    if (houseBlackjack === true) {
+        $("#houseHand").append(`. Blackjack!`);
+    }
     $("#housePoints").text(`${house.score()}`);
     // calculate result
     result = scoreGame(player.score(), house.score());
