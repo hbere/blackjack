@@ -7,6 +7,10 @@ body {
     margin: 2%;
 }
 
+.displayNoneOnMobile {
+    display: none;
+}
+
 /* SIZES IN CASE WANT TO CHANGE LATER
 
 button {
