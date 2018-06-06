@@ -1,7 +1,6 @@
 // ** IN PROGRESS **
 // TODO - research rules for what happens if house hits "Blackjack"
 // TODO - add hand-splitting button & functionality when user draws a pair
-// TODO - add keyboard controls
 // TODO - add betting
 
 // ** BACK BURNER **
@@ -14,7 +13,7 @@
 // TODO - add record of wins & losses
 // TODO - add "You went bust" and auto-complete game if user hits to get 22 or more points
 // TODO - fix bug where house always considers Ace to be 1 point (should be flexible & recognize Blackjacks)
-
+// TODO - add keyboard controls
 
 // Variables
 const strSpade = "♠";
@@ -26,7 +25,7 @@ const faces = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 const scoresA1 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 1]
 // const scoresA11 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
 let deck = [];
-let status = 1; // game status. 1=ongoing. 0=over.
+let gameStatus = 1; // game status. 1=ongoing. 0=over.
 let player;
 let house;
 let scoreboard = [0, 0, 0]; // wins | pushes | losses
@@ -141,10 +140,25 @@ $('#newGame').click(function () {
     start();
 });
 
+$('body').keypress(function( event ) {
+    console.log(event.which);
+    if ( event.which === 49 ) {
+        // 1 key = hit
+        hit();
+    } else if ( event.which === 50 ) {
+        // 2 key = stand
+        stand();
+    } else if ( event.which === 51 ) {
+        // 3 key = next game
+        start();
+    }
+});
+
 // Functions
 function start() {
     player = new Player();
     house = new Player();
+    gameStatus = 1;
     // generate deck; e.g., shuffle(1) means using 1 deck of 52 cards,
     // shuffle(2) means using 2 decks of 52 cards, etc.
     shuffle(1);
@@ -181,52 +195,57 @@ function start() {
 function stand() {
     let result = [];
     let houseBlackjack = false;
-    // Show "Blackjack"
-    if (house.score() === 21) {
-        houseBlackjack = true;
+    if (gameStatus === 1) {
+        // Show "Blackjack"
+        if (house.score() === 21) {
+            houseBlackjack = true;
+        }
+        // Make sure house hits until they have 17 or more points
+        house.hitWhileLessThan17();
+        // console.log cards
+        console.log(`House: ${house.show()}.
+        Score: ${house.score()}`);
+        // display cards
+        $("#playerHand").empty();
+        $("#playerHand").append(`${player.show()}`);
+        $("#playerPoints").text(`${player.score()}`);
+        $("#houseHand").empty();
+        $("#houseHand").append(`${house.show()}`);
+        if (houseBlackjack === true) {
+            $("#houseHand").append(`. Blackjack!`);
+        }
+        $("#housePoints").text(`${house.score()}`);
+        // calculate result
+        result = scoreGame(player.score(), house.score());
+        // display result & scoreboard
+        $("#result").text(result[3]);
+        console.log(result[3]);
+        scoreboard[0] += result[0];
+        scoreboard[1] += result[1];
+        scoreboard[2] += result[2];
+        $("#scoreboard").text(`${[scoreboard[0]]}-${[scoreboard[2]]}-${[scoreboard[1]]}`);
+        // disable the hit and stand buttons until new game is started
+        $("#hit").prop("disabled", true);
+        $("#stand").prop("disabled", true);
     }
-    // Make sure house hits until they have 17 or more points
-    house.hitWhileLessThan17();
-    // console.log cards
-    console.log(`House: ${house.show()}.
-    Score: ${house.score()}`);
-    // display cards
-    $("#playerHand").empty();
-    $("#playerHand").append(`${player.show()}`);
-    $("#playerPoints").text(`${player.score()}`);
-    $("#houseHand").empty();
-    $("#houseHand").append(`${house.show()}`);
-    if (houseBlackjack === true) {
-        $("#houseHand").append(`. Blackjack!`);
-    }
-    $("#housePoints").text(`${house.score()}`);
-    // calculate result
-    result = scoreGame(player.score(), house.score());
-    // display result & scoreboard
-    $("#result").text(result[3]);
-    console.log(result[3]);
-    scoreboard[0] += result[0];
-    scoreboard[1] += result[1];
-    scoreboard[2] += result[2];
-    $("#scoreboard").text(`${[scoreboard[0]]}-${[scoreboard[2]]}-${[scoreboard[1]]}`);
-    // disable the hit and stand buttons until new game is started
-    $("#hit").prop("disabled", true);
-    $("#stand").prop("disabled", true);
+    gameStatus = 0;
     return null;
 }
 
 function hit() {
-    player.hit();
-    // console.log cards
-    console.log(`Player: ${player.show()}.
-    Score: ${player.score()}`);
-    // display cards
-    $("#playerHand").empty();
-    $("#playerHand").append(`${player.show()}`);
-    $("#playerPoints").text(`${player.score()}`);
-    // stop the game if player went bust
-    if (player.score() > 21) {
-        stand();
+    if (gameStatus === 1) {
+        player.hit();
+        // console.log cards
+        console.log(`Player: ${player.show()}.
+        Score: ${player.score()}`);
+        // display cards
+        $("#playerHand").empty();
+        $("#playerHand").append(`${player.show()}`);
+        $("#playerPoints").text(`${player.score()}`);
+        // stop the game if player went bust
+        if (player.score() > 21) {
+            stand();
+        }
     }
     return null;
 }
