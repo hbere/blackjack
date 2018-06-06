@@ -169,9 +169,9 @@ function start() {
     player.draw();
     house.draw();
     // console.log cards
-    console.log('***New Game***');
-    console.log(`Player: ${player.show()}.
-    Score: ${player.score()}`);
+    // console.log('***New Game***');
+    // console.log(`Player: ${player.show()}.
+    // Score: ${player.score()}`);
     // display cards
     $("#houseHand").empty();
     $("#houseHand").append(`${house.show(true)} <span class="subtle">[?]</span>`);
@@ -203,8 +203,8 @@ function stand() {
         // Make sure house hits until they have 17 or more points
         house.hitWhileLessThan17();
         // console.log cards
-        console.log(`House: ${house.show()}.
-        Score: ${house.score()}`);
+        // console.log(`House: ${house.show()}.
+        // Score: ${house.score()}`);
         // display cards
         $("#playerHand").empty();
         $("#playerHand").append(`${player.show()}`);
@@ -219,7 +219,7 @@ function stand() {
         result = scoreGame(player.score(), house.score());
         // display result & scoreboard
         $("#result").text(result[3]);
-        console.log(result[3]);
+        // console.log(result[3]);
         scoreboard[0] += result[0];
         scoreboard[1] += result[1];
         scoreboard[2] += result[2];
@@ -236,8 +236,8 @@ function hit() {
     if (gameStatus === 1) {
         player.hit();
         // console.log cards
-        console.log(`Player: ${player.show()}.
-        Score: ${player.score()}`);
+        // console.log(`Player: ${player.show()}.
+        // Score: ${player.score()}`);
         // display cards
         $("#playerHand").empty();
         $("#playerHand").append(`${player.show()}`);
