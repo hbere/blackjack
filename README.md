@@ -10,4 +10,4 @@ Navigate to the [current dev location](https://lottosim.website/dev/blackjack/) 
 * Add betting
 
 # License
-The content of this repository is licensed according to an [MIT License](https://github.com/jcoffeepot/blackjack/blob/master/LICENSE).
+The content of this repository is licensed according to the [license listed here](https://github.com/hbere/blackjack/blob/master/LICENSE).
