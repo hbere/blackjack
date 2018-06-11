@@ -59,14 +59,14 @@ function Player() {
         let returnArray = [];
         let strHTML = "";
 
-        if (showOneCardOnly===false) {
+        if (showOneCardOnly === false) {
             cardsTemp.push(...this.cards);
         } else {
             cardsTemp.push(this.cards[0]);
         }
 
         for (let card of cardsTemp) {
-            if ( redCard(card) ) {
+            if (redCard(card)) {
                 strHTML += "<span class='card red'>";
                 strHTML += card;
                 strHTML += "</span>";
@@ -104,26 +104,29 @@ function Player() {
         }
     };
     this.hitWhileLessThan17 = function () {
-        let ace = hasAce(this.cards);
-        let myScore = arraySum(this.scores);
-        if (ace === 1) {
-            myScore += 10; // if ace and score is 11 or less, report score plus 10.
-        }
-        if (myScore < 17) {
-            do {
-                if (myScore > 11) {
-                    this.draw(); // if score > 11, ace must equal 1 point, else bust. Report score.
-                    myScore = arraySum(this.scores);
-                } else if (ace === 0) {
-                    this.draw(); // if no ace, then ace scoring is irrelevant. Report score.
-                    myScore = arraySum(this.scores);
-                } else if (ace === 1) {
-                    this.draw(); // if no ace, then ace scoring is irrelevant. Report score.
-                    myScore = arraySum(this.scores) + 10;
-                }
-            } while (myScore < 17);
-        }
-    }
+        let ace, myScore;
+        do {
+            // SCORE
+            // 1. What's my score assuming Aces are 1 point?
+            myScore = arraySum(this.scores);
+            // 2. Do I have an ace?
+            ace = hasAce(this.cards);
+            // 3. Do I have an ace with less than 12 points? If yes, add 10 to score.
+            if (ace === 1 && myScore < 12) {
+                myScore += 10;
+            }
+            // DRAW if my score is less than 17.
+            if (myScore < 17) {
+                this.draw();
+            }
+            // RE-SCORE
+            myScore = arraySum(this.scores);
+            ace = hasAce(this.cards);
+            if (ace === 1 && myScore < 12) {
+                myScore += 10;
+            }
+        } while (myScore < 17);
+    };
 }
 
 // Event Listeners
@@ -147,15 +150,15 @@ $('#newGame').click(function () {
     start();
 });
 
-$('body').keypress(function( event ) {
+$('body').keypress(function (event) {
     // console.log(event.which);
-    if ( event.which === 49 ) {
+    if (event.which === 49) {
         // 1 key = hit()
         hit();
-    } else if ( event.which === 50 ) {
+    } else if (event.which === 50) {
         // 2 key = stand()
         stand();
-    } else if ( event.which === 51 ) {
+    } else if (event.which === 51) {
         // 3 key = next game
         start();
     }
