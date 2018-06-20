@@ -12,40 +12,60 @@
 </head>
 
 <body>
-    <header>
-        <h2>Simple Blackjack</h2>
-    </header>
+    <div class="container">
 
-    <main>
-        <div class="player">
-            <div class="subtle font-small">
-                <p>You have <span id="playerPoints" class="strong pre-wrap"></span><strong> points</strong>.</p>
+        <header>
+            <h2>Simple Blackjack</h2>
+        </header>
+
+        <main>
+            <div class="player">
+                <div class="subtle font-small">
+                    <p>You have
+                        <span id="playerPoints" class="strong pre-wrap"></span>
+                        <strong> points</strong>.</p>
+                </div>
+                <div id="playerHand" class="pre-wrap font-large"></div>
             </div>
-            <div id="playerHand" class="pre-wrap font-large"></div>
-        </div>
-        <div class="controls">
-            <button id="hit">Hit<span class="font-small displayNoneOnMobile"> [1]</span></button>
-            <!-- <button id="split">Split<span class="font-small displayNoneOnMobile"></span></button> -->
-            <button id="stand">Stand<span class="font-small displayNoneOnMobile"> [2]</span></button>
-            <button id="newGame">Next Game<span class="font-small displayNoneOnMobile"> [3]</span></button>
-        </div>
-        <div class="house">
-            <div id="houseHand" class="pre-wrap font-large"></div>
-            <div class="subtle font-small">
-                <p>The house stands at 17 and shows <span id="housePoints" class="strong pre-wrap"></span><strong> points</strong>.</p>
+            <div class="controls">
+                <button id="hit">Hit
+                    <span class="font-small displayNoneOnMobile"> [1]</span>
+                </button>
+                <!-- <button id="split">Split<span class="font-small displayNoneOnMobile"></span></button> -->
+                <button id="stand">Stand
+                    <span class="font-small displayNoneOnMobile"> [2]</span>
+                </button>
+                <button id="newGame">Next Game
+                    <span class="font-small displayNoneOnMobile"> [3]</span>
+                </button>
             </div>
-        </div>
-        <div class="scoreboard">
-            <h3 id="result" class="pre-wrap"><h3>
-        </div>
-        <div class="scoreboard">
-            <h2>Won-Lost-Pushed</h2>
-            <span id="scoreboard" class="subtle font-small strong pre-wrap"></span>
-        </div>
-        <!-- <div class="rules"></div> -->
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/main.js"></script>
-    </main>
+            <div class="house">
+                <div id="houseHand" class="pre-wrap font-large"></div>
+                <div class="subtle font-small">
+                    <p>The house stands at 17 and shows
+                        <span id="housePoints" class="strong pre-wrap"></span>
+                        <strong> points</strong>.</p>
+                </div>
+            </div>
+            <div class="scoreboard">
+                <h3 id="result" class="pre-wrap">
+                    <h3>
+            </div>
+            <div class="scoreboard">
+                <h2>Won-Lost-Pushed</h2>
+                <span id="scoreboard" class="subtle font-small strong pre-wrap"></span>
+            </div>
+
+            <div class="subtle font-small">
+                <p> ©
+                    <span id="thisYear"></span> Hal Beresford</p>
+            </div>
+        </main>
+
+    </div>
+    <!-- Load JavaScript -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
