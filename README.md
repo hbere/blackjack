@@ -9,5 +9,8 @@ Navigate to the [current dev location](https://lottosim.website/dev/blackjack/) 
 * Add keyboard controls
 * Add betting
 
+# Functional Dependencies
+* jQuery
+
 # License
 The content of this repository is licensed according to the [license listed here](https://github.com/hbere/blackjack/blob/master/LICENSE).
