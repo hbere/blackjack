@@ -2,7 +2,7 @@
 This is a simple blackjack web application built using JavaScript, jQuery, HTML, and CSS.
 
 # Quickstart
-Navigate to the [current dev location](https://lottosim.website/dev/blackjack/) and give it a try.
+Try it [here](https://hbere.space/blackjack/).
 
 # Backlog
 * Add hand-splitting button & functionality when user draws a pair
